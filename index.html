@@ -4,81 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="Il Bucchero - Ristorante tradizionale toscano a Chiusi. Cucina autentica sotto il pergolato di viti centenarie.">
-    <meta name="keywords"
-        content="ristorante, Chiusi, Toscana, cucina toscana, pappardelle, bistecca fiorentina, pergolato">
-    <meta name="author" content="Il Bucchero">
-    <meta name="robots" content="index, follow">
-
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="restaurant">
-    <meta property="og:url" content="https://www.ilbucchero.it/">
-    <meta property="og:title" content="Il Bucchero - Ristorante Tradizionale Toscano">
-    <meta property="og:description" content="Sapori autentici della tradizione toscana a Chiusi">
-    <meta property="og:image" content="https://www.ilbucchero.it/og-image.jpg">
-
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://www.ilbucchero.it/">
-    <meta property="twitter:title" content="Il Bucchero - Ristorante Tradizionale Toscano">
-    <meta property="twitter:description" content="Sapori autentici della tradizione toscana a Chiusi">
-
-    <!-- Hreflang for international SEO -->
-    <link rel="alternate" hreflang="it" href="https://www.ilbucchero.it/" />
-    <link rel="alternate" hreflang="en" href="https://www.ilbucchero.it/en/" />
-    <link rel="alternate" hreflang="fr" href="https://www.ilbucchero.it/fr/" />
-    <link rel="alternate" hreflang="es" href="https://www.ilbucchero.it/es/" />
-    <link rel="alternate" hreflang="de" href="https://www.ilbucchero.it/de/" />
-    <link rel="alternate" hreflang="nl" href="https://www.ilbucchero.it/nl/" />
-    <link rel="alternate" hreflang="ru" href="https://www.ilbucchero.it/ru/" />
-    <link rel="alternate" hreflang="ja" href="https://www.ilbucchero.it/ja/" />
-    <link rel="alternate" hreflang="zh" href="https://www.ilbucchero.it/zh/" />
-    <link rel="alternate" hreflang="x-default" href="https://www.ilbucchero.it/" />
-
-    <!-- Structured Data for SEO -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "Restaurant",
-        "name": "Il Bucchero",
-        "image": "https://www.ilbucchero.it/restaurant.jpg",
-        "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "Via della Pace, 36",
-            "addressLocality": "Chiusi",
-            "addressRegion": "SI",
-            "postalCode": "53043",
-            "addressCountry": "IT"
-        },
-        "geo": {
-            "@type": "GeoCoordinates",
-            "latitude": 43.0161,
-            "longitude": 11.9494
-        },
-        "telephone": "+390578222092",
-        "servesCuisine": "Italian, Tuscan",
-        "priceRange": "$$",
-        "openingHoursSpecification": [
-            {
-                "@type": "OpeningHoursSpecification",
-                "dayOfWeek": ["Sunday", "Monday", "Tuesday", "Thursday", "Friday", "Saturday"],
-                "opens": "12:00",
-                "closes": "14:30"
-            },
-            {
-                "@type": "OpeningHoursSpecification",
-                "dayOfWeek": ["Sunday", "Monday", "Tuesday", "Thursday", "Friday", "Saturday"],
-                "opens": "19:00",
-                "closes": "22:00"
-            }
-        ]
-    }
-    </script>
-
-    <title>Il Bucchero - Ristorante Tradizionale Toscano a Chiusi</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+    <title>Villa Fantasia - Eventi & Vacanze</title>
     <style>
         * {
             margin: 0;
@@ -86,1736 +12,1063 @@
             box-sizing: border-box;
         }
 
+        :root {
+            --rosa: #ff69b4;
+            --turchese: #40e0d0;
+            --rosa-chiaro: #ffb6c1;
+            --turchese-scuro: #20b2aa;
+            --bianco: #ffffff;
+            --grigio: #f8f9fa;
+            --panna: #f5f5dc;
+        }
+
         body {
-            font-family: 'Garamond', 'Georgia', serif;
-            background-color: #FFF8DC;
-            color: #4a3825;
-            overflow-x: hidden;
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: var(--panna);
         }
 
-        /* Language Selector - New Style */
-        .lang-selector {
-            position: absolute;
-            top: 1rem;
-            right: 2rem;
-            z-index: 10;
+        /* Navbar */
+        .navbar {
+            background: linear-gradient(45deg, var(--rosa), var(--turchese));
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
         }
 
-        .lang-dropdown {
-            position: relative;
-        }
-
-        .lang-current {
-            background: rgba(255, 255, 255, 0.25);
-            border: 2px solid rgba(255, 255, 255, 0.4);
-            border-radius: 12px;
-            padding: 0.7rem 1.2rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            color: #FFF8DC;
-            font-size: 1.3rem;
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            gap: 0.5rem;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        .lang-current:hover {
-            background: rgba(255, 255, 255, 0.35);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-        }
-
-        .lang-arrow {
-            font-size: 0.8rem;
-            transition: transform 0.3s ease;
-        }
-
-        .lang-dropdown.active .lang-arrow {
-            transform: rotate(180deg);
-        }
-
-        .lang-menu {
-            position: absolute;
-            top: calc(100% + 0.5rem);
-            right: 0;
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
-            padding: 0.5rem;
-            display: none;
-            min-width: 180px;
-            animation: slideDown 0.3s ease;
-        }
-
-        .lang-dropdown.active .lang-menu {
-            display: block;
-        }
-
-        @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-10px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .lang-option {
-            padding: 0.7rem 1rem;
-            cursor: pointer;
-            border-radius: 8px;
-            transition: all 0.2s ease;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: #4a3825;
-            font-size: 1.1rem;
-        }
-
-        .lang-option:hover {
-            background: #FFF8DC;
-            transform: translateX(5px);
-        }
-
-        /* Header with Logo */
-        header {
-            background: url(./assets/esterno-notte-wallpaper.jpg) no-repeat;
-            background-size: cover;
-            padding: 2rem 0;
-            text-align: center;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-            position: relative;
-            overflow: hidden;
-        }
-
-        header::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: repeating-linear-gradient(45deg,
-                    transparent,
-                    transparent 10px,
-                    rgba(255, 255, 255, 0.03) 10px,
-                    rgba(255, 255, 255, 0.03) 20px);
-            animation: slide 20s linear infinite;
-        }
-
-        @keyframes slide {
-            0% {
-                transform: translate(0, 0);
-            }
-
-            100% {
-                transform: translate(50px, 50px);
-            }
-        }
-
-        .header-content {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 1.5rem;
-            position: relative;
-            z-index: 1;
         }
 
         .logo {
-            width: 80px;
-            height: 80px;
-            animation: logoFloat 3s ease-in-out infinite;
-        }
-
-        @keyframes logoFloat {
-
-            0%,
-            100% {
-                transform: translateY(0px);
-            }
-
-            50% {
-                transform: translateY(-10px);
-            }
-        }
-
-        h1 {
-            font-size: 3.5rem;
-            color: #FFF8DC;
-            text-shadow: 3px 3px 6px rgb(0, 0, 0);
-            letter-spacing: 4px;
-            margin-bottom: 0.5rem;
-            animation: fadeInDown 1s ease-out;
-        }
-
-        .subtitle {
-            font-size: 1.3rem;
-            color: #f4e4c1;
-            font-style: italic;
-            animation: fadeInUp 1s ease-out 0.3s backwards;
-            position: relative;
-            z-index: 1;
-        }
-
-        @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-30px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Navigation */
-        nav {
-            background-color: #6b4423;
-            padding: 1rem 0;
-            text-align: center;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            overflow-x: auto;
-        }
-
-        nav a {
-            color: #FFF8DC;
+            color: white;
+            font-size: 1.8rem;
+            font-weight: bold;
             text-decoration: none;
-            margin: 0 1.5rem;
-            font-size: 1.1rem;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            display: inline-block;
-            position: relative;
-            white-space: nowrap;
         }
 
-        nav a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 50%;
-            width: 0;
-            height: 2px;
-            background-color: #f4e4c1;
-            transition: all 0.3s ease;
-            transform: translateX(-50%);
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
         }
 
-        nav a:hover {
-            color: #f4e4c1;
-            transform: translateY(-2px);
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s;
         }
 
-        nav a:hover::after {
-            width: 100%;
+        .nav-menu a:hover {
+            opacity: 0.8;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
         }
 
         /* Main Content */
-        .container {
+        main {
+            margin-top: 80px;
+        }
+
+        .section {
+            padding: 4rem 0;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 3rem 1rem;
+            padding-left: 2rem;
+            padding-right: 2rem;
         }
 
-        .hero {
+        .section-title {
             text-align: center;
-            margin-bottom: 4rem;
-            animation: fadeIn 1.5s ease-out;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            background: linear-gradient(45deg, var(--rosa), var(--turchese));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-
-            to {
-                opacity: 1;
-            }
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(255, 105, 180, 0.3), rgba(64, 224, 208, 0.3)),
+                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23f0f8ff" width="1200" height="600"/><path fill="%23e6f3ff" d="M0 400l50-16.7c50-16.3 150-50 250-50s200 33.7 300 50 200 16.7 300 0 200-50 250-66.7L1200 300v300H0z"/></svg>');
+            background-size: cover;
+            background-position: center;
+            height: 70vh;
+            min-height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            margin-top: -80px;
+            padding-top: 80px;
         }
 
-        .hero h2 {
-            font-size: 2.2rem;
-            color: #8b4513;
+        .hero-content h1 {
+            font-size: 3.5rem;
             margin-bottom: 1rem;
-            position: relative;
-            display: inline-block;
-            animation: titleGlow 2s ease-in-out infinite;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
 
-        @keyframes titleGlow {
-
-            0%,
-            100% {
-                text-shadow: 0 0 10px rgba(139, 69, 19, 0.3);
-            }
-
-            50% {
-                text-shadow: 0 0 20px rgba(139, 69, 19, 0.6);
-            }
-        }
-
-        .hero h2::before,
-        .hero h2::after {
-            content: '◆';
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #a0522d;
-            font-size: 1.5rem;
-            animation: diamondSpin 4s linear infinite;
-        }
-
-        @keyframes diamondSpin {
-
-            0%,
-            100% {
-                transform: translateY(-50%) rotate(0deg);
-            }
-
-            50% {
-                transform: translateY(-50%) rotate(180deg);
-            }
-        }
-
-        .hero h2::before {
-            left: -50px;
-        }
-
-        .hero h2::after {
-            right: -50px;
-        }
-
-        .hero p {
+        .hero-content p {
             font-size: 1.2rem;
-            line-height: 1.8;
-            color: #6b4423;
-            max-width: 800px;
-            margin: 0 auto;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
         }
 
-        /* Features */
-        .features {
+        /* Cards Grid */
+        .cards-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
-            margin: 4rem 0;
+            margin-top: 2rem;
         }
 
-        .feature-card {
+        .card {
             background: white;
-            padding: 2rem;
             border-radius: 15px;
-            box-shadow: 0 8px 25px rgba(139, 69, 19, 0.1);
-            transition: all 0.4s ease;
-            animation: slideUp 0.8s ease-out backwards;
-            position: relative;
-            overflow: hidden;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-top: 4px solid var(--rosa);
         }
 
-        .feature-card::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(139, 69, 19, 0.05) 0%, transparent 70%);
-            animation: rotateGradient 10s linear infinite;
-            opacity: 0;
-            transition: opacity 0.4s ease;
+        .card:nth-child(even) {
+            border-top: 4px solid var(--turchese);
         }
 
-        .feature-card:hover::before {
-            opacity: 1;
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
         }
 
-        @keyframes rotateGradient {
-            0% {
-                transform: rotate(0deg);
-            }
-
-            100% {
-                transform: rotate(360deg);
-            }
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 1rem;
+            background: linear-gradient(45deg, var(--rosa), var(--turchese));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
         }
 
-        .feature-card:nth-child(1) {
-            animation-delay: 0.2s;
-        }
-
-        .feature-card:nth-child(2) {
-            animation-delay: 0.4s;
-        }
-
-        .feature-card:nth-child(3) {
-            animation-delay: 0.6s;
-        }
-
-        @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(50px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .feature-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 15px 40px rgba(139, 69, 19, 0.25);
-        }
-
-        .feature-card h3 {
-            font-size: 1.6rem;
-            color: #8b4513;
-            margin-bottom: 1rem;
+        .card h3 {
             text-align: center;
-            position: relative;
-            z-index: 1;
+            margin-bottom: 1rem;
+            color: var(--turchese-scuro);
         }
 
-        .feature-card p {
-            font-size: 1.05rem;
+        .card p {
+            text-align: center;
+            color: #666;
             line-height: 1.6;
-            color: #6b4423;
-            position: relative;
-            z-index: 1;
         }
 
         /* Gallery Grid */
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin: 3rem 0;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
         }
 
-        .gallery-item {
+        .gallery-card {
+            background: var(--grigio);
+            border-radius: 10px;
+            padding: 0;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+            border: 2px solid transparent;
+            background-clip: padding-box;
+            overflow: hidden;
+            height: 320px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .gallery-card:hover {
+            transform: scale(1.05);
+            border: 2px solid var(--rosa);
+        }
+
+        .gallery-placeholder {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(45deg, var(--rosa-chiaro), var(--turchese));
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            flex-shrink: 0;
+            background-size: cover;
+            background-position: center;
             position: relative;
             overflow: hidden;
-            border-radius: 12px;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-            transition: all 0.4s ease;
-            animation: fadeInScale 0.8s ease-out backwards;
         }
 
-        .gallery-item:nth-child(odd) {
-            animation-delay: 0.1s;
+        .gallery-placeholder::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.4);
+            transition: all 0.3s;
         }
 
-        .gallery-item:nth-child(even) {
-            animation-delay: 0.2s;
+        .gallery-placeholder:hover::before {
+            background: rgba(0, 0, 0, 0.2);
         }
 
-        @keyframes fadeInScale {
-            from {
-                opacity: 0;
-                transform: scale(0.8) rotate(-5deg);
-            }
-
-            to {
-                opacity: 1;
-                transform: scale(1) rotate(0deg);
-            }
+        .gallery-placeholder span {
+            position: relative;
+            z-index: 2;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+            font-weight: bold;
         }
 
-        .gallery-item:hover {
-            transform: scale(1.05) rotate(2deg);
-            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
-            z-index: 10;
+        /* Immagini specifiche per ogni gallery item */
+        .gallery-placeholder.giardino {
+            background-image: url('./assets/villa-2.webp'), linear-gradient(45deg, var(--rosa-chiaro), var(--turchese));
         }
 
-        .gallery-item img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-            display: block;
-            transition: all 0.4s ease;
+        .gallery-placeholder.piscina {
+            background-image: url('./assets/pool.webp'), linear-gradient(45deg, #40e0d0, #0099cc);
         }
 
-        .gallery-item:hover img {
-            transform: scale(1.15);
-            filter: brightness(1.1);
+        .gallery-placeholder.sala {
+            background-image: url('./assets/villa-4.webp'), linear-gradient(45deg, var(--rosa-chiaro), var(--turchese));
         }
 
-        /* Testimonials */
-        .testimonials {
-            background: linear-gradient(135deg, #ffffff 0%, #FFF8DC 100%);
-            padding: 3rem 2rem;
+        .gallery-placeholder.terrazza {
+            background-image: url('./assets/room.webp'), linear-gradient(45deg, #ffa500, #ff6b6b);
+        }
+
+        .gallery-placeholder.sala-pranzo {
+            background-image: url('./assets/villa-3.webp'), linear-gradient(45deg, #8e44ad, #3498db);
+        }
+
+        .gallery-placeholder.area-relax {
+            background-image: url('./assets/boats.webp'), linear-gradient(45deg, #2ecc71, #27ae60);
+        }
+
+        .gallery-placeholder.vista-panoramica {
+            background-image: url('./assets/mountains.webp'), linear-gradient(45deg, #3498db, #2980b9);
+        }
+
+        .gallery-placeholder.paese {
+            background-image: url('./assets/garden.webp'), linear-gradient(45deg, #e74c3c, #c0392b);
+        }
+
+        .gallery-card-content {
+            padding: 1rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .gallery-card h4 {
+            margin-bottom: 0.5rem;
+            color: var(--turchese-scuro);
+            font-size: 1.1rem;
+        }
+
+        .gallery-card p {
+            color: #666;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+
+        /* Events Cards */
+        .events-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .event-card {
+            background: white;
             border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(139, 69, 19, 0.15);
-            margin: 4rem 0;
-            animation: fadeIn 1s ease-out;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+            border: 3px solid transparent;
+            background-clip: padding-box;
         }
 
-        .testimonial-grid {
+        .event-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+            border: 3px solid var(--rosa);
+        }
+
+        .event-header {
+            background: linear-gradient(135deg, var(--rosa), var(--turchese));
+            color: white;
+            padding: 1.5rem;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .event-body {
+            padding: 2rem;
+        }
+
+        .event-body h3 {
+            color: var(--turchese-scuro);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .event-body p {
+            color: #666;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .event-features {
+            list-style: none;
+            padding: 0;
+        }
+
+        .event-features li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+            color: #555;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .event-features li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--turchese);
+            font-weight: bold;
+        }
+
+        .event-features li:last-child {
+            border-bottom: none;
+        }
+
+        /* Contact Section */
+        .contact-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
             margin-top: 2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        .testimonial-card {
+        .contact-card {
             background: white;
-            padding: 1.5rem;
-            border-radius: 12px;
-            border-left: 4px solid #8b4513;
-            transition: all 0.3s ease;
-            animation: slideInLeft 0.6s ease-out backwards;
-            position: relative;
-            overflow: hidden;
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+            border-top: 4px solid var(--rosa);
         }
 
-        .testimonial-card:nth-child(1) {
-            animation-delay: 0.1s;
+        .contact-card:nth-child(even) {
+            border-top: 4px solid var(--turchese);
         }
 
-        .testimonial-card:nth-child(2) {
-            animation-delay: 0.2s;
+        .contact-card:hover {
+            transform: translateY(-5px);
         }
 
-        .testimonial-card:nth-child(3) {
-            animation-delay: 0.3s;
-        }
-
-        @keyframes slideInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-30px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        .testimonial-card::before {
-            content: '"';
-            position: absolute;
-            top: -10px;
-            left: 10px;
-            font-size: 4rem;
-            color: rgba(139, 69, 19, 0.1);
-            font-family: Georgia, serif;
-        }
-
-        .testimonial-card:hover {
-            transform: translateX(5px) scale(1.02);
-            box-shadow: 0 8px 20px rgba(139, 69, 19, 0.25);
-        }
-
-        .testimonial-text {
-            font-style: italic;
-            color: #6b4423;
+        .contact-icon {
+            font-size: 2rem;
             margin-bottom: 1rem;
-            font-size: 1.05rem;
-            position: relative;
-            z-index: 1;
         }
 
-        .testimonial-author {
-            font-weight: bold;
-            color: #8b4513;
-            margin-bottom: 0.5rem;
+        .contact-card h3 {
+            color: var(--turchese-scuro);
+            margin-bottom: 1rem;
         }
 
-        .stars {
-            color: #FFD700;
-            font-size: 1.2rem;
-            animation: starTwinkle 2s ease-in-out infinite;
-        }
-
-        @keyframes starTwinkle {
-
-            0%,
-            100% {
-                opacity: 1;
-            }
-
-            50% {
-                opacity: 0.7;
-            }
-        }
-
-        /* Contact Section */
-        .contact-section {
-            background: linear-gradient(135deg, #ffffff 0%, #f4e4c1 100%);
-            padding: 3rem 2rem;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(139, 69, 19, 0.15);
-            margin: 4rem 0;
-            animation: fadeIn 1s ease-out;
-        }
-
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .contact-info {
-            padding: 1.5rem;
-        }
-
-        .contact-item {
-            margin-bottom: 1.5rem;
-            animation: fadeInUp 0.6s ease-out backwards;
-        }
-
-        .contact-item:nth-child(1) {
-            animation-delay: 0.1s;
-        }
-
-        .contact-item:nth-child(2) {
-            animation-delay: 0.2s;
-        }
-
-        .contact-item:nth-child(3) {
-            animation-delay: 0.3s;
-        }
-
-        .contact-item:nth-child(4) {
-            animation-delay: 0.4s;
-        }
-
-        .contact-item h3 {
-            color: #8b4513;
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .contact-item p {
-            color: #6b4423;
-            font-size: 1.05rem;
+        .contact-card p {
+            color: #666;
             line-height: 1.6;
         }
 
-        .hours-table {
+        .contact-card a {
+            color: var(--turchese);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .contact-card a:hover {
+            opacity: 0.8;
+        }
+
+        /* Lightbox */
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
             width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+
+        .lightbox-content {
+            position: relative;
+            margin: 2% auto;
+            padding: 0;
+            width: 90%;
+            max-width: 1200px;
+            text-align: center;
+        }
+
+        .lightbox-image {
+            width: 100%;
+            height: auto;
+            max-height: 80vh;
+            object-fit: contain;
+            border-radius: 10px;
+        }
+
+        .lightbox-caption {
+            color: white;
+            padding: 1rem;
+            font-size: 1.1rem;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 5px;
             margin-top: 1rem;
         }
 
-        .hours-table td {
-            padding: 0.5rem 0;
-            color: #6b4423;
-            transition: all 0.3s ease;
+        .close-lightbox {
+            color: white;
+            float: right;
+            font-size: 3rem;
+            font-weight: bold;
+            cursor: pointer;
+            position: absolute;
+            top: -50px;
+            right: 0;
         }
 
-        .hours-table tr:hover td {
-            color: #8b4513;
-            padding-left: 5px;
-        }
-
-        .hours-table td:first-child {
-            font-weight: 600;
-            width: 40%;
-        }
-
-        .closed {
-            color: #d9534f;
-            font-weight: 600;
-        }
-
-        #map {
-            height: 400px;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            animation: fadeInScale 0.8s ease-out;
-        }
-
-        /* External Links */
-        .external-links {
-            background: linear-gradient(135deg, #f4e4c1 0%, #ffffff 100%);
-            padding: 2rem;
-            border-radius: 12px;
-            margin: 2rem 0;
-            box-shadow: 0 6px 20px rgba(139, 69, 19, 0.1);
-            animation: fadeIn 1s ease-out;
-        }
-
-        .external-links h3 {
-            color: #8b4513;
-            margin-bottom: 1.5rem;
-            font-size: 1.5rem;
-            text-align: center;
-        }
-
-        .links-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
-        }
-
-        .external-links a {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: #6b4423;
-            text-decoration: none;
-            padding: 1rem;
-            transition: all 0.3s ease;
-            border-radius: 8px;
-            background: white;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-        }
-
-        .external-links a:hover {
-            color: #8b4513;
-            transform: translateY(-3px);
-            box-shadow: 0 6px 15px rgba(139, 69, 19, 0.2);
+        .close-lightbox:hover {
+            opacity: 0.7;
         }
 
         /* Footer */
-        footer {
-            background: linear-gradient(135deg, #6b4423 0%, #8b4513 100%);
-            color: #FFF8DC;
+        .footer {
+            background: linear-gradient(45deg, var(--rosa), var(--turchese));
+            color: white;
             text-align: center;
-            padding: 2rem;
+            padding: 3rem 2rem 2rem;
             margin-top: 4rem;
         }
 
-        footer p {
-            font-size: 1.05rem;
-            margin-bottom: 0.5rem;
-        }
-
-        /* Decorative Elements */
-        .ornament {
-            text-align: center;
+        .footer-content h3 {
             font-size: 2rem;
-            color: #a0522d;
-            margin: 3rem 0;
-            animation: pulse 2s ease-in-out infinite;
+            margin-bottom: 1rem;
         }
 
-        @keyframes pulse {
-
-            0%,
-            100% {
-                opacity: 0.6;
-                transform: scale(1);
-            }
-
-            50% {
-                opacity: 1;
-                transform: scale(1.15);
-            }
+        .footer-content p {
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            font-size: 1.1rem;
         }
 
-        /* Page Transition */
-        .page-content {
-            animation: pageEnter 0.5s ease-out;
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
         }
 
-        @keyframes pageEnter {
-            from {
-                opacity: 0;
-                transform: translateX(-20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.1);
         }
 
-        /* Mobile Responsive */
+        .footer-links a:hover {
+            background: rgba(255, 255, 255, 0.2);
+            opacity: 0.8;
+        }
+
+        /* Mobile Responsiveness */
         @media (max-width: 768px) {
-            h1 {
-                font-size: 2.2rem;
-                letter-spacing: 2px;
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: linear-gradient(45deg, var(--rosa), var(--turchese));
+                flex-direction: column;
+                padding: 1rem 0;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .nav-menu li {
+                padding: 0.5rem 0;
+                margin-left: 10%;
+            }
+
+            .lightbox-content {
+                margin-top: 80%;
+            }
+
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .nav-container {
+                padding: 0 1rem;
             }
 
             .logo {
-                width: 60px;
-                height: 60px;
+                font-size: 1.5rem;
             }
 
-            .subtitle {
+            .section {
+                padding: 2rem 0;
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+                margin-bottom: 2rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-content p {
                 font-size: 1rem;
             }
 
-            .lang-selector {
-                top: 0.5rem;
-                right: 0.5rem;
-            }
-
-            .lang-current {
-                padding: 0.5rem 0.9rem;
-                font-size: 1.1rem;
-            }
-
-            nav {
-                padding: 0.8rem 0;
-                white-space: nowrap;
-            }
-
-            nav a {
-                margin: 0 0.8rem;
-                font-size: 1rem;
-            }
-
-            .container {
-                padding: 2rem 1rem;
-            }
-
-            .hero h2 {
-                font-size: 1.8rem;
-            }
-
-            .hero h2::before,
-            .hero h2::after {
-                display: none;
-            }
-
-            .hero p {
-                font-size: 1.05rem;
-            }
-
-            .features {
+            .cards-grid {
                 grid-template-columns: 1fr;
                 gap: 1.5rem;
             }
 
             .gallery-grid {
-                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
                 gap: 1rem;
             }
 
-            .gallery-item img {
-                height: 200px;
+            .gallery-card {
+                height: 280px;
             }
 
-            .testimonial-grid {
+            .gallery-placeholder {
+                height: 160px;
+                font-size: 1rem;
+            }
+
+            .gallery-placeholder span {
+                font-size: 1rem;
+            }
+
+            .events-grid {
                 grid-template-columns: 1fr;
             }
 
             .contact-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .links-grid {
-                grid-template-columns: 1fr;
-            }
-
-            #map {
-                height: 300px;
-            }
-
-            .header-content {
-                flex-direction: column;
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
                 gap: 1rem;
+            }
+
+            .footer-links {
+                gap: 1rem;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .footer-links a {
+                display: block;
+                width: fit-content;
             }
         }
 
         @media (max-width: 480px) {
-            h1 {
-                font-size: 1.8rem;
+            .hero-content h1 {
+                font-size: 2rem;
             }
 
-            .logo {
-                width: 50px;
-                height: 50px;
+            .card {
+                padding: 1.5rem;
             }
 
-            .subtitle {
-                font-size: 0.95rem;
+            .event-body {
+                padding: 1.5rem;
             }
 
-            nav a {
-                margin: 0 0.5rem;
-                font-size: 0.95rem;
+            .contact-card {
+                padding: 1.5rem;
             }
 
-            .feature-card h3 {
-                font-size: 1.4rem;
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-card {
+                height: 250px;
+            }
+
+            .gallery-placeholder {
+                height: 140px;
+            }
+
+            .gallery-placeholder span {
+                font-size: 1rem;
             }
         }
-
-        /* Accessibility improvements */
-        @media (prefers-reduced-motion: reduce) {
-
-            *,
-            *::before,
-            *::after {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-            }
-        }
-
-                .feature-card {
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 8px 25px rgba(139, 69, 19, 0.1);
-            transition: all 0.4s ease;
-            animation: slideUp 0.8s ease-out backwards;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .feature-image {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            display: block;
-        }
-
-        .feature-content {
-            padding: 2rem;
-        }
-
-        .feature-card::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(139, 69, 19, 0.05) 0%, transparent 70%);
-            animation: rotateGradient 10s linear infinite;
-            opacity: 0;
-            transition: opacity 0.4s ease;
-        }
-
-        .feature-card:hover::before {
-            opacity: 1;
-        }
-
-                .feature-card:nth-child(1) {
-            animation-delay: 0.2s;
-        }
-
-        .feature-card:nth-child(2) {
-            animation-delay: 0.4s;
-        }
-
-        .feature-card:nth-child(3) {
-            animation-delay: 0.6s;
-        }
-
-        
-        .feature-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 15px 40px rgba(139, 69, 19, 0.25);
-        }
-
-        .feature-card h3 {
-            font-size: 1.6rem;
-            color: #8b4513;
-            margin-bottom: 1rem;
-            text-align: center;
-            position: relative;
-            z-index: 1;
-        }
-
-        .feature-card p {
-            font-size: 1.05rem;
-            line-height: 1.6;
-            color: #6b4423;
-            position: relative;
-            z-index: 1;
-        }
-
     </style>
 </head>
 
 <body>
-    <div id="page-content" class="page-content">
-        <header>
-            <div class="lang-selector">
-                <div class="lang-dropdown" id="langDropdown">
-                    <div class="lang-current" onclick="toggleLangMenu()">
-                        <span id="currentLangFlag">🇮🇹</span>
-                        <span id="currentLangCode">IT</span>
-                        <span class="lang-arrow">▼</span>
-                    </div>
-                    <div class="lang-menu" id="langMenu">
-                        <div class="lang-option" onclick="changeLanguage('it')">🇮🇹 Italiano</div>
-                        <div class="lang-option" onclick="changeLanguage('en')">🇬🇧 English</div>
-                        <div class="lang-option" onclick="changeLanguage('fr')">🇫🇷 Français</div>
-                        <div class="lang-option" onclick="changeLanguage('es')">🇪🇸 Español</div>
-                        <div class="lang-option" onclick="changeLanguage('de')">🇩🇪 Deutsch</div>
-                        <div class="lang-option" onclick="changeLanguage('nl')">🇳🇱 Nederlands</div>
-                        <div class="lang-option" onclick="changeLanguage('ru')">🇷🇺 Русский</div>
-                        <div class="lang-option" onclick="changeLanguage('ja')">🇯🇵 日本語</div>
-                        <div class="lang-option" onclick="changeLanguage('zh')">🇨🇳 中文</div>
-                    </div>
-                </div>
-            </div>
-            <div class="header-content">
-                <img src="logo.png">
-                <div>
-                    <h1>IL BUCCHERO</h1>
-                    <p class="subtitle" data-translate="subtitle">Sapori Autentici della Tradizione Toscana</p>
-                </div>
-            </div>
-        </header>
-
-        <nav>
-            <a href="#" onclick="showPage('home'); return false;" data-translate="nav-home">Home</a>
-            <a href="#" onclick="showPage('gallery'); return false;" data-translate="nav-gallery">Galleria</a>
-            <a href="#contact" onclick="scrollToContact(); return false;" data-translate="nav-contact">Contatti</a>
-        </nav>
-
-        <div id="home-page" class="container">
-            <div class="hero">
-                <h2 data-translate="welcome">Benvenuti</h2>
-                <p data-translate="welcome-text">
-                    Nel cuore di Chiusi, in Toscana, il nostro ristorante vi accoglie con
-                    la calda atmosfera della tradizione. Sotto il pergolato di viti centenarie,
-                    riscoprite i sapori autentici della nostra terra, preparati con passione
-                    e ingredienti genuini.
-                </p>
-            </div>
-
-
-            <div class="ornament">◆◆◆</div>
-
-            <div class="features">
-                <div class="feature-card">
-                    <img src="./assets/esterno-3.jpg" alt="Pergolato con viti centenarie del ristorante Il Bucchero"
-                        class="feature-image"
-                        onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22200%22%3E%3Crect fill=%22%23deb887%22 width=%22400%22 height=%22200%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-family=%22serif%22 font-size=%2224%22 fill=%22%234a3825%22%3EPergolato%3C/text%3E%3C/svg%3E'">
-                    <div class="feature-content">
-                        <h3>🍇 <span data-translate="feature1-title">Ambiente Unico</span></h3>
-                        <p data-translate="feature1-text">
-                            Cenate sotto un suggestivo pergolato di viti in un giardino
-                            che profuma di storia e tradizione. Un'oasi di tranquillità
-                            nel cuore di Chiusi.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="feature-card">
-                    <img src="./assets/pasta.jpg" alt="Pasta fresca fatta in casa al ristorante Il Bucchero"
-                        class="feature-image"
-                        onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22200%22%3E%3Crect fill=%22%23deb887%22 width=%22400%22 height=%22200%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-family=%22serif%22 font-size=%2224%22 fill=%22%234a3825%22%3ECucina%3C/text%3E%3C/svg%3E'">
-                    <div class="feature-content">
-                        <h3>🍷 <span data-translate="feature2-title">Cucina Tradizionale</span></h3>
-                        <p data-translate="feature2-text">
-                            Piatti tipici toscani preparati con passione: pappardelle,
-                            pasta allo scoglio, risotto, carne di manzo, anatra,
-                            bistecche alla fiorentina e molto altro.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="feature-card">
-                    <img src="./assets/antipasto.jpg" alt="Tagliere di prodotti locali toscani" class="feature-image"
-                        onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22200%22%3E%3Crect fill=%22%23deb887%22 width=%22400%22 height=%22200%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-family=%22serif%22 font-size=%2224%22 fill=%22%234a3825%22%3EOpzioni%3C/text%3E%3C/svg%3E'">
-                    <div class="feature-content">
-                        <h3>🌿 <span data-translate="feature3-title">Opzioni per Tutti</span></h3>
-                        <p data-translate="feature3-text">
-                            Menu vegetariano e vegano disponibile. Utilizziamo prodotti
-                            locali freschi, formaggi toscani, e vini pregiati.
-                            Accettiamo carte di credito.
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="ornament">◆◆◆</div>
-
-            <div class="hero">
-                <h2 data-translate="specialties">Le Nostre Specialità</h2>
-                <p data-translate="specialties-text">
-                    Dalla panna cotta cremosa alle pappardelle fatte in casa, dal risotto
-                    saporito ai piatti di pesce fresco. Ogni piatto racconta una storia
-                    di sapori genuini e tradizione culinaria toscana. Non dimenticate
-                    di provare il nostro tiramisù fatto in casa!
-                </p>
-            </div>
-
-            <!-- Testimonials moved here -->
-            <div class="testimonials">
-                <h2 style="text-align: center; color: #8b4513; margin-bottom: 1rem;" data-translate="testimonials">Cosa
-                    Dicono i Nostri Clienti</h2>
-                <div class="testimonial-grid">
-                    <div class="testimonial-card">
-                        <p class="testimonial-text">"You can't not go!"</p>
-                        <p class="testimonial-author">Flavia D.</p>
-                        <div class="stars">★★★★★</div>
-                    </div>
-                    <div class="testimonial-card">
-                        <p class="testimonial-text">"Lovely place, nice treatment and very good food."</p>
-                        <p class="testimonial-author">Maribel D.</p>
-                        <div class="stars">★★★★★</div>
-                    </div>
-                    <div class="testimonial-card">
-                        <p class="testimonial-text">"A good time, a real treat"</p>
-                        <p class="testimonial-author">Domenico R.</p>
-                        <div class="stars">★★★★★</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="external-links">
-                <h3 data-translate="reviews-online">Recensioni Online</h3>
-                <div class="links-grid">
-                    <a href="https://www.tripadvisor.com/Restaurant_Review-g194739-d2096240-Reviews-Il_Bucchero-Chiusi_Tuscany.html"
-                        target="_blank">📍 TripAdvisor</a>
-                    <a href="https://restaurantguru.it/Il-Bucchero-Chiusi" target="_blank">📍 Restaurant Guru</a>
-                    <a href="https://borghi.toscana.it/blog/dove-mangiare/2022/dove-mangiare-a-chiusi-ristorante-il-bucchero/"
-                        target="_blank">📍 Borghi Toscana</a>
-                    <a href="https://trova-aperto.it/chiusi/ristorante-bar-il-bucchero-di-pascale-giuseppe-ristorante-pizzeria-651378"
-                        target="_blank">📍 Trova Aperto</a>
-                </div>
-            </div>
-
-            <div class="ornament">◆◆◆</div>
-
-            <!-- Contact section at the bottom of home -->
-            <div id="contact" class="contact-section">
-                <div class="hero">
-                    <h2 data-translate="contact">Contatti</h2>
-                    <p data-translate="contact-text">Venite a trovarci o contattateci</p>
-                </div>
-
-                <div class="contact-grid">
-                    <div class="contact-info">
-                        <div class="contact-item">
-                            <h3>📍 <span data-translate="address">Indirizzo</span></h3>
-                            <p>Via della Pace, 36<br>53043 Chiusi (SI)<br>Toscana, Italia</p>
-                        </div>
-
-                        <div class="contact-item">
-                            <h3>📞 <span data-translate="phone">Telefono</span></h3>
-                            <p><a href="tel:+390578222092" style="color: #6b4423; text-decoration: none;">+39 0578
-                                    222092</a></p>
-                        </div>
-
-                        <div class="contact-item">
-                            <h3>🕒 <span data-translate="hours">Orari</span></h3>
-                            <table class="hours-table">
-                                <tr>
-                                    <td data-translate="day-sun">Domenica</td>
-                                    <td>12:00 - 14:30 | 19:00 - 22:00</td>
-                                </tr>
-                                <tr>
-                                    <td data-translate="day-mon">Lunedì</td>
-                                    <td>12:00 - 14:30 | 19:00 - 22:00</td>
-                                </tr>
-                                <tr>
-                                    <td data-translate="day-tue">Martedì</td>
-                                    <td>12:00 - 14:30 | 19:00 - 22:00</td>
-                                </tr>
-                                <tr>
-                                    <td data-translate="day-wed">Mercoledì</td>
-                                    <td class="closed" data-translate="closed">Chiuso</td>
-                                </tr>
-                                <tr>
-                                    <td data-translate="day-thu">Giovedì</td>
-                                    <td>12:00 - 14:30 | 19:00 - 22:00</td>
-                                </tr>
-                                <tr>
-                                    <td data-translate="day-fri">Venerdì</td>
-                                    <td>12:00 - 14:30 | 19:00 - 22:00</td>
-                                </tr>
-                                <tr>
-                                    <td data-translate="day-sat">Sabato</td>
-                                    <td>12:00 - 14:30 | 19:00 - 22:00</td>
-                                </tr>
-                            </table>
-                        </div>
-
-                        <div class="contact-item">
-                            <h3>ℹ️ <span data-translate="info">Informazioni</span></h3>
-                            <p data-translate="info-text">
-                                • Menu vegetariano e vegano<br>
-                                • Carte di credito accettate<br>
-                                • Pranzo e cena<br>
-                                • Tavoli all'aperto<br>
-                                • Asporto disponibile
-                            </p>
-                        </div>
-                    </div>
-
-                    <div>
-                        <div id="map"></div>
-                    </div>
-                </div>
-            </div>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#home" class="logo">👑 Villa Fantasia</a>
+            <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">☰</button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#gallery">Galleria</a></li>
+                <li><a href="#events">Eventi</a></li>
+                <li><a href="#contact">Contatti</a></li>
+                <li><a href="#map">Mappa</a></li>
+            </ul>
         </div>
+    </nav>
 
-        <div id="gallery-page" class="container" style="display: none;">
-            <div class="hero">
-                <h2 data-translate="gallery">Galleria</h2>
-                <p data-translate="gallery-text">Un viaggio visivo attraverso i nostri piatti e la nostra atmosfera
-                    unica</p>
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero" style=" background-image: url('./assets/villa-frontal.jpg'), 
+        linear-gradient(45deg, #ffa500, #ff6b6b);">
+            <div class="hero-content" style="background-color: #0000006b;
+  padding: 1rem;
+  border-radius: 25px;">
+                <h1>👑 Villa Fantasia</h1>
+                <p>La destinazione perfetta per eventi indimenticabili e vacanze da sogno al Lago di Garda</p>
             </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="section">
+            <h2 class="section-title">I Nostri Servizi</h2>
+
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="card-icon">🎉</div>
+                    <h3>Eventi Esclusivi</h3>
+                    <p>Organizziamo matrimoni, feste private e celebrazioni indimenticabili in un ambiente elegante e
+                        raffinato, con servizi personalizzati per ogni esigenza.</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">🏖️</div>
+                    <h3>Vacanze di Lusso</h3>
+                    <p>Goditi il relax completo nella nostra villa esclusiva con servizi di alto livello, vista
+                        panoramica e accesso privilegiato alle bellezze del Lago di Garda.</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">🍽️</div>
+                    <h3>Catering Gourmet</h3>
+                    <p>Chef professionali preparano menu personalizzati con ingredienti locali di prima qualità per
+                        rendere ogni momento speciale e indimenticabile.</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">🏊</div>
+                    <h3>Wellness & Relax</h3>
+                    <p>Piscina privata, area benessere e spazi per il relax immersi nella natura della costa toscana
+                        per un'esperienza rigenerante.</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">🌅</div>
+                    <h3>Location da Sogno</h3>
+                    <p>Posizione privilegiata con vista mare mozzafiato e giardini curati per creare l'atmosfera
+                        perfetta per ogni occasione speciale.</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">🎵</div>
+                    <h3>Intrattenimento</h3>
+                    <p>Servizi di animazione, musica dal vivo e intrattenimento personalizzato per rendere ogni evento
+                        unico e memorabile per tutti gli ospiti.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section id="gallery" class="section" style="background-color: var(--grigio);">
+            <h2 class="section-title">La Nostra Villa</h2>
 
             <div class="gallery-grid">
-                <div class="gallery-item">
-                    <img src="./assets/antipasto.jpg" alt="Tagliere di salumi e formaggi"
-                        onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22300%22%3E%3Crect fill=%22%23deb887%22 width=%22400%22 height=%22300%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-family=%22serif%22 font-size=%2224%22 fill=%22%234a3825%22%3EAntipasto%3C/text%3E%3C/svg%3E'">
-                </div>
-                <div class="gallery-item">
-                    <img src="./assets/pasta.jpg" alt="Pasta fresca"
-                        onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22300%22%3E%3Crect fill=%22%23deb887%22 width=%22400%22 height=%22300%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-family=%22serif%22 font-size=%2224%22 fill=%22%234a3825%22%3EPasta%3C/text%3E%3C/svg%3E'">
-                </div>
-                <div class="gallery-item">
-                    <img src="./assets/pasta-2.jpg" alt="Pappardelle"
-                        onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22300%22%3E%3Crect fill=%22%23deb887%22 width=%22400%22 height=%22300%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-family=%22serif%22 font-size=%2224%22 fill=%22%234a3825%22%3EPappardelle%3C/text%3E%3C/svg%3E'">
-                </div>
-                <div class="gallery-item">
-                    <img src="./assets/baccala.jpg" alt="Bistecca alla fiorentina"
-                        onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22300%22%3E%3Crect fill=%22%23deb887%22 width=%22400%22 height=%22300%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-family=%22serif%22 font-size=%2224%22 fill=%22%234a3825%22%3EFiorentina%3C/text%3E%3C/svg%3E'">
-                </div>
-                <div class="gallery-item">
-                    <img src="./assets/pizza.jpg" alt="Pizza"
-                        onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22300%22%3E%3Crect fill=%22%23deb887%22 width=%22400%22 height=%22300%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-family=%22serif%22 font-size=%2224%22 fill=%22%234a3825%22%3EFiorentina%3C/text%3E%3C/svg%3E'">
-                </div>
-                <div class="gallery-item">
-                    <img src="./assets/pizza-2.jpg" alt="Pizza"
-                        onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22300%22%3E%3Crect fill=%22%23deb887%22 width=%22400%22 height=%22300%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-family=%22serif%22 font-size=%2224%22 fill=%22%234a3825%22%3EFiorentina%3C/text%3E%3C/svg%3E'">
+                <div class="gallery-card">
+                    <div class="gallery-placeholder giardino"><span>🌸 Giardino</span></div>
+                    <div class="gallery-card-content">
+                        <h4>Giardino Incantato</h4>
+                        <p>Spazi verdi curati nei minimi dettagli per cerimonie all'aperto</p>
+                    </div>
                 </div>
 
-                <div class="gallery-item">
-                    <img src="./assets/crostini-con-lardo-di-colonnata.jpg" alt="Crostini"
-                        onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22300%22%3E%3Crect fill=%22%23deb887%22 width=%22400%22 height=%22300%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-family=%22serif%22 font-size=%2224%22 fill=%22%234a3825%22%3ERisotto%3C/text%3E%3C/svg%3E'">
+                <div class="gallery-card">
+                    <div class="gallery-placeholder piscina"><span>🏊‍♀️ Piscina</span></div>
+                    <div class="gallery-card-content">
+                        <h4>Piscina Panoramica</h4>
+                        <p>Relax esclusivo con vista mare e servizio personalizzato</p>
+                    </div>
                 </div>
-                <div class="gallery-item">
-                    <img src="./assets/dolce.jpg" alt="Panna cotta"
-                        onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22300%22%3E%3Crect fill=%22%23deb887%22 width=%22400%22 height=%22300%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-family=%22serif%22 font-size=%2224%22 fill=%22%234a3825%22%3EPanna Cotta%3C/text%3E%3C/svg%3E'">
+
+                <div class="gallery-card">
+                    <div class="gallery-placeholder sala"><span>🍽️ Sala</span></div>
+                    <div class="gallery-card-content">
+                        <h4>Sala Ricevimenti</h4>
+                        <p>Eleganti spazi interni per eventi raffinati e cene di gala</p>
+                    </div>
                 </div>
-                <div class="gallery-item">
-                    <img src="./assets/esterno.jpg" alt="Pergolato"
-                        onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22300%22%3E%3Crect fill=%22%23deb887%22 width=%22400%22 height=%22300%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-family=%22serif%22 font-size=%2224%22 fill=%22%234a3825%22%3EPergolato%3C/text%3E%3C/svg%3E'">
+
+                <div class="gallery-card">
+                    <div class="gallery-placeholder terrazza"><span>🌅 Terrazza</span></div>
+                    <div class="gallery-card-content">
+                        <h4>Terrazza Vista Mare</h4>
+                        <p>Location perfetta per aperitivi al tramonto e momenti romantici</p>
+                    </div>
                 </div>
-                <div class="gallery-item">
-                    <img src="./assets/esterno-2.jpg" alt="Pergolato"
-                        onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22300%22%3E%3Crect fill=%22%23deb887%22 width=%22400%22 height=%22300%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-family=%22serif%22 font-size=%2224%22 fill=%22%234a3825%22%3EPergolato%3C/text%3E%3C/svg%3E'">
+
+                <div class="gallery-card">
+                    <div class="gallery-placeholder sala-pranzo"><span>🍷 Sala Pranzo</span></div>
+                    <div class="gallery-card-content">
+                        <h4>Sala da Pranzo</h4>
+                        <p>Ambienti raffinati per cene intime e degustazioni esclusive</p>
+                    </div>
                 </div>
-                <div class="gallery-item">
-                    <img src="./assets/esterno-3.jpg" alt="Pergolato"
-                        onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22300%22%3E%3Crect fill=%22%23deb887%22 width=%22400%22 height=%22300%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-family=%22serif%22 font-size=%2224%22 fill=%22%234a3825%22%3EPergolato%3C/text%3E%3C/svg%3E'">
+
+                <div class="gallery-card">
+                    <div class="gallery-placeholder area-relax"><span>🛋️ Area Relax</span></div>
+                    <div class="gallery-card-content">
+                        <h4>Zona Relax</h4>
+                        <p>Spazi confortevoli per il riposo e la conversazione</p>
+                    </div>
+                </div>
+
+                <div class="gallery-card">
+                    <div class="gallery-placeholder vista-panoramica"><span>🌊 Vista Panoramica</span></div>
+                    <div class="gallery-card-content">
+                        <h4>Vista Panoramica</h4>
+                        <p>Scenari mozzafiato della costa toscana e dell'Argentario</p>
+                    </div>
+                </div>
+
+                <div class="gallery-card">
+                    <div class="gallery-placeholder paese"><span>🏰 Lago di Garda</span></div>
+                    <div class="gallery-card-content">
+                        <h4>Il Borgo</h4>
+                        <p>La bellezza storica del Lago di Garda a pochi passi dalla villa</p>
+                    </div>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <footer>
-            <p><strong>Il Bucchero</strong> - Ristorante Tradizionale</p>
-            <p>Via della Pace, 36 • 53043 Chiusi (SI) • Toscana</p>
-            <p>Tel: +39 0578 222092</p>
-            <p data-translate="footer-hours">Aperto tutti i giorni 12:00-14:30 | 19:00-22:00 (Chiuso Mercoledì)</p>
-        </footer>
+        <!-- Events Section -->
+        <section id="events" class="section">
+            <h2 class="section-title">I Nostri Eventi</h2>
+
+            <div class="events-grid">
+                <div class="event-card">
+                    <div class="event-header">💒 Matrimoni da Favola</div>
+                    <div class="event-body">
+                        <h3>Il Giorno Perfetto</h3>
+                        <p>Realizza il matrimonio dei tuoi sogni in una location esclusiva con vista mare, servizi
+                            personalizzati e un team dedicato per ogni dettaglio.</p>
+                        <ul class="event-features">
+                            <li>Ceremony all'aperto con vista panoramica</li>
+                            <li>Ricevimento in giardino o sala interna</li>
+                            <li>Menu personalizzato dello chef</li>
+                            <li>Decorazioni floreali e allestimenti</li>
+                            <li>Servizio fotografico professionale</li>
+                            <li>Suite nuziale inclusa</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="event-card">
+                    <div class="event-header">🎉 Eventi Corporate</div>
+                    <div class="event-body">
+                        <h3>Meeting & Conferenze</h3>
+                        <p>Spazi professionali e attrezzature all'avanguardia per i tuoi eventi aziendali in un ambiente
+                            elegante e riservato.</p>
+                        <ul class="event-features">
+                            <li>Sale meeting con tecnologie AV</li>
+                            <li>Wi-Fi ad alta velocità</li>
+                            <li>Servizio catering business</li>
+                            <li>Parcheggio riservato</li>
+                            <li>Servizio di accoglienza</li>
+                            <li>Team building in giardino</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="event-card">
+                    <div class="event-header">🏖️ Vacanze Esclusive</div>
+                    <div class="event-body">
+                        <h3>Soggiorno di Lusso</h3>
+                        <p>Vivi un'esperienza unica nella nostra villa esclusiva con servizi personalizzati e comfort di
+                            alto livello.</p>
+                        <ul class="event-features">
+                            <li>Suite con vista mare</li>
+                            <li>Colazione gourmet inclusa</li>
+                            <li>Servizio concierge 24/7</li>
+                            <li>Accesso esclusivo alla spiaggia privata</li>
+                            <li>Servizio di pulizia giornaliero</li>
+                            <li>Attività ricreative su richiesta</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section" style="background-color: var(--grigio);">
+            <h2 class="section-title">Contattaci</h2>
+
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <div class="contact-icon">📍</div>
+                    <h3>Dove Siamo</h3>
+                    <p>Villa Fantasia<br>Via delle Rose 25<br>25019 Sirmione (BS)<br>Lago di Garda - Italia</p>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-icon">📞</div>
+                    <h3>Contatti</h3>
+                    <p>Elisabetta: <a href="tel:+393456789012">+39 345 6789012</a><br>
+                        Marco: <a href="tel:+393987654321">+39 398 7654321</a></p>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-icon">✉️</div>
+                    <h3>Email</h3>
+                    <p><a href="/cdn-cgi/l/email-protection#e88984818b8dc69ac68bd1d0a88f85898184c68b8785"><span
+                                class="__cf_email__"
+                                data-cfemail="63020f0a00064d114d005a5b23040e020a0f4d000c0e">[email&#160;protected]</span></a>
+                    </p>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-icon">🕐</div>
+                    <h3>Orari</h3>
+                    <p>Lunedì - Domenica<br>9:00 - 20:00<br>Su appuntamento</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Map Section -->
+        <section id="map" class="section" style="background-color: var(--grigio);">
+            <h2 class="section-title">Dove Trovarci</h2>
+            <div style="height: 400px; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+                <iframe width="100%" height="100%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"
+                    src="https://www.openstreetmap.org/export/embed.html?bbox=10.6%2C45.4%2C10.8%2C45.6&amp;layer=mapnik&amp;marker=45.4919%2C10.7144"
+                    style="border: none;">
+                </iframe>
+            </div>
+            <div style="text-align: center; margin-top: 2rem;">
+                <p style="color: #666; font-size: 1.1rem;">
+                    📍 Villa Fantasia - Via delle Rose 25 - 25019 Sirmione (BS) - Lago di Garda - Italia
+                </p>
+                <a href="https://www.openstreetmap.org/?mlat=45.4919&mlon=10.7144#map=14/45.4919/10.7144"
+                    target="_blank"
+                    style="color: var(--turchese); text-decoration: none; font-weight: bold; margin-top: 1rem; display: inline-block;">
+                    🗺️ Visualizza su OpenStreetMap
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox">
+        <span class="close-lightbox">&times;</span>
+        <div class="lightbox-content">
+            <div id="lightbox-image"></div>
+            <div class="lightbox-caption" id="lightbox-caption"></div>
+        </div>
     </div>
 
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <h3>👑 Villa Fantasia</h3>
+            <p>La destinazione perfetta per eventi indimenticabili e vacanze da sogno</p>
+
+            <div class="footer-links">
+                <a href="#home">Home</a>
+                <a href="#gallery">Galleria</a>
+                <a href="#events">Eventi</a>
+                <a href="#contact">Contatti</a>
+                <a href="#map">Mappa</a>
+                <a href="https://www.matrimonio.com/location-matrimoni/villa-isolotto--e392469" target="_blank">🌸
+                    Matrimoni</a>
+                <a href="https://www.airbnb.it/h/villaisolotto" target="_blank">🏠 Airbnb</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Termini e Condizioni</a>
+            </div>
+
+            <p style="margin-top: 2rem; opacity: 0.8;">&copy; 2025 Villa Fantasia. Tutti i diritti riservati.</p>
+        </div>
+    </footer>
+
     <script>
-        // Comprehensive translations for 9 languages
-        const translations = {
-            it: {
-                subtitle: 'Sapori Autentici della Tradizione Toscana',
-                'nav-home': 'Home',
-                'nav-gallery': 'Galleria',
-                'nav-contact': 'Contatti',
-                welcome: 'Benvenuti',
-                'welcome-text': 'Nel cuore di Chiusi, in Toscana, il nostro ristorante vi accoglie con la calda atmosfera della tradizione. Sotto il pergolato di viti centenarie, riscoprite i sapori autentici della nostra terra, preparati con passione e ingredienti genuini.',
-                'feature1-title': 'Ambiente Unico',
-                'feature1-text': 'Cenate sotto un suggestivo pergolato di viti in un giardino che profuma di storia e tradizione. Un\'oasi di tranquillità nel cuore di Chiusi.',
-                'feature2-title': 'Cucina Tradizionale',
-                'feature2-text': 'Piatti tipici toscani preparati con passione: pappardelle, pasta allo scoglio, risotto, carne di manzo, anatra, bistecche alla fiorentina e molto altro.',
-                'feature3-title': 'Opzioni per Tutti',
-                'feature3-text': 'Menu vegetariano e vegano disponibile. Utilizziamo prodotti locali freschi, formaggi toscani, e vini pregiati. Accettiamo carte di credito.',
-                specialties: 'Le Nostre Specialità',
-                'specialties-text': 'Dalla panna cotta cremosa alle pappardelle fatte in casa, dal risotto saporito ai piatti di pesce fresco. Ogni piatto racconta una storia di sapori genuini e tradizione culinaria toscana. Non dimenticate di provare il nostro tiramisù fatto in casa!',
-                'reviews-online': 'Recensioni Online',
-                gallery: 'Galleria',
-                'gallery-text': 'Un viaggio visivo attraverso i nostri piatti e la nostra atmosfera unica',
-                testimonials: 'Cosa Dicono i Nostri Clienti',
-                contact: 'Contatti',
-                'contact-text': 'Venite a trovarci o contattateci',
-                address: 'Indirizzo',
-                phone: 'Telefono',
-                hours: 'Orari',
-                'day-sun': 'Domenica',
-                'day-mon': 'Lunedì',
-                'day-tue': 'Martedì',
-                'day-wed': 'Mercoledì',
-                'day-thu': 'Giovedì',
-                'day-fri': 'Venerdì',
-                'day-sat': 'Sabato',
-                closed: 'Chiuso',
-                info: 'Informazioni',
-                'info-text': '• Menu vegetariano e vegano<br>• Carte di credito accettate<br>• Pranzo e cena<br>• Tavoli all\'aperto<br>• Asporto disponibile',
-                'footer-hours': 'Aperto tutti i giorni 12:00-14:30 | 19:00-22:00 (Chiuso Mercoledì)'
-            },
-            en: {
-                subtitle: 'Authentic Flavors of Tuscan Tradition',
-                'nav-home': 'Home',
-                'nav-gallery': 'Gallery',
-                'nav-contact': 'Contact',
-                welcome: 'Welcome',
-                'welcome-text': 'In the heart of Chiusi, Tuscany, our restaurant welcomes you with the warm atmosphere of tradition. Under the centuries-old vine pergola, rediscover the authentic flavors of our land, prepared with passion and genuine ingredients.',
-                'feature1-title': 'Unique Atmosphere',
-                'feature1-text': 'Dine under a charming vine pergola in a garden that smells of history and tradition. An oasis of tranquility in the heart of Chiusi.',
-                'feature2-title': 'Traditional Cuisine',
-                'feature2-text': 'Typical Tuscan dishes prepared with passion: pappardelle, seafood pasta, risotto, beef, duck, Florentine steak and much more.',
-                'feature3-title': 'Options for Everyone',
-                'feature3-text': 'Vegetarian and vegan menu available. We use fresh local products, Tuscan cheeses, and fine wines. Credit cards accepted.',
-                specialties: 'Our Specialties',
-                'specialties-text': 'From creamy panna cotta to homemade pappardelle, from tasty risotto to fresh fish dishes. Each dish tells a story of genuine flavors and Tuscan culinary tradition. Don\'t forget to try our homemade tiramisu!',
-                'reviews-online': 'Online Reviews',
-                gallery: 'Gallery',
-                'gallery-text': 'A visual journey through our dishes and unique atmosphere',
-                testimonials: 'What Our Customers Say',
-                contact: 'Contact',
-                'contact-text': 'Come visit us or contact us',
-                address: 'Address',
-                phone: 'Phone',
-                hours: 'Hours',
-                'day-sun': 'Sunday',
-                'day-mon': 'Monday',
-                'day-tue': 'Tuesday',
-                'day-wed': 'Wednesday',
-                'day-thu': 'Thursday',
-                'day-fri': 'Friday',
-                'day-sat': 'Saturday',
-                closed: 'Closed',
-                info: 'Information',
-                'info-text': '• Vegetarian and vegan menu<br>• Credit cards accepted<br>• Lunch and dinner<br>• Outdoor seating<br>• Takeaway available',
-                'footer-hours': 'Open every day 12:00-14:30 | 19:00-22:00 (Closed Wednesday)'
-            },
-            fr: {
-                subtitle: 'Saveurs Authentiques de la Tradition Toscane',
-                'nav-home': 'Accueil',
-                'nav-gallery': 'Galerie',
-                'nav-contact': 'Contact',
-                welcome: 'Bienvenue',
-                'welcome-text': 'Au cœur de Chiusi, en Toscane, notre restaurant vous accueille dans l\'atmosphère chaleureuse de la tradition. Sous la pergola de vignes centenaires, redécouvrez les saveurs authentiques de notre terroir, préparées avec passion et des ingrédients authentiques.',
-                'feature1-title': 'Atmosphère Unique',
-                'feature1-text': 'Dînez sous une charmante pergola de vignes dans un jardin qui sent l\'histoire et la tradition. Une oasis de tranquillité au cœur de Chiusi.',
-                'feature2-title': 'Cuisine Traditionnelle',
-                'feature2-text': 'Plats toscans typiques préparés avec passion : pappardelle, pâtes aux fruits de mer, risotto, bœuf, canard, steak florentin et bien plus encore.',
-                'feature3-title': 'Options pour Tous',
-                'feature3-text': 'Menu végétarien et végétalien disponible. Nous utilisons des produits locaux frais, des fromages toscans et des vins fins. Cartes de crédit acceptées.',
-                specialties: 'Nos Spécialités',
-                'specialties-text': 'De la panna cotta crémeuse aux pappardelle maison, du risotto savoureux aux plats de poisson frais. Chaque plat raconte une histoire de saveurs authentiques et de tradition culinaire toscane. N\'oubliez pas d\'essayer notre tiramisu maison !',
-                'reviews-online': 'Avis en Ligne',
-                gallery: 'Galerie',
-                'gallery-text': 'Un voyage visuel à travers nos plats et notre atmosphère unique',
-                testimonials: 'Ce Que Disent Nos Clients',
-                contact: 'Contact',
-                'contact-text': 'Venez nous rendre visite ou contactez-nous',
-                address: 'Adresse',
-                phone: 'Téléphone',
-                hours: 'Horaires',
-                'day-sun': 'Dimanche',
-                'day-mon': 'Lundi',
-                'day-tue': 'Mardi',
-                'day-wed': 'Mercredi',
-                'day-thu': 'Jeudi',
-                'day-fri': 'Vendredi',
-                'day-sat': 'Samedi',
-                closed: 'Fermé',
-                info: 'Informations',
-                'info-text': '• Menu végétarien et végétalien<br>• Cartes de crédit acceptées<br>• Déjeuner et dîner<br>• Places en terrasse<br>• Plats à emporter disponibles',
-                'footer-hours': 'Ouvert tous les jours 12:00-14:30 | 19:00-22:00 (Fermé le mercredi)'
-            },
-            es: {
-                subtitle: 'Sabores Auténticos de la Tradición Toscana',
-                'nav-home': 'Inicio',
-                'nav-gallery': 'Galería',
-                'nav-contact': 'Contacto',
-                welcome: 'Bienvenidos',
-                'welcome-text': 'En el corazón de Chiusi, Toscana, nuestro restaurante le da la bienvenida con el ambiente cálido de la tradición. Bajo la pérgola de vides centenarias, redescubra los sabores auténticos de nuestra tierra, preparados con pasión e ingredientes genuinos.',
-                'feature1-title': 'Ambiente Único',
-                'feature1-text': 'Cene bajo una encantadora pérgola de vides en un jardín que huele a historia y tradición. Un oasis de tranquilidad en el corazón de Chiusi.',
-                'feature2-title': 'Cocina Tradicional',
-                'feature2-text': 'Platos toscanos típicos preparados con pasión: pappardelle, pasta con mariscos, risotto, carne de res, pato, bistec florentino y mucho más.',
-                'feature3-title': 'Opciones para Todos',
-                'feature3-text': 'Menú vegetariano y vegano disponible. Usamos productos locales frescos, quesos toscanos y vinos finos. Se aceptan tarjetas de crédito.',
-                specialties: 'Nuestras Especialidades',
-                'specialties-text': 'Desde la panna cotta cremosa hasta las pappardelle caseras, desde el risotto sabroso hasta los platos de pescado fresco. Cada plato cuenta una historia de sabores genuinos y tradición culinaria toscana. ¡No olvide probar nuestro tiramisú casero!',
-                'reviews-online': 'Reseñas en Línea',
-                gallery: 'Galería',
-                'gallery-text': 'Un viaje visual a través de nuestros platos y atmósfera única',
-                testimonials: 'Lo Que Dicen Nuestros Clientes',
-                contact: 'Contacto',
-                'contact-text': 'Venga a visitarnos o contáctenos',
-                address: 'Dirección',
-                phone: 'Teléfono',
-                hours: 'Horario',
-                'day-sun': 'Domingo',
-                'day-mon': 'Lunes',
-                'day-tue': 'Martes',
-                'day-wed': 'Miércoles',
-                'day-thu': 'Jueves',
-                'day-fri': 'Viernes',
-                'day-sat': 'Sábado',
-                closed: 'Cerrado',
-                info: 'Información',
-                'info-text': '• Menú vegetariano y vegano<br>• Se aceptan tarjetas de crédito<br>• Almuerzo y cena<br>• Asientos al aire libre<br>• Para llevar disponible',
-                'footer-hours': 'Abierto todos los días 12:00-14:30 | 19:00-22:00 (Cerrado miércoles)'
-            },
-            de: {
-                subtitle: 'Authentische Aromen der Toskanischen Tradition',
-                'nav-home': 'Startseite',
-                'nav-gallery': 'Galerie',
-                'nav-contact': 'Kontakt',
-                welcome: 'Willkommen',
-                'welcome-text': 'Im Herzen von Chiusi, Toskana, empfängt Sie unser Restaurant mit der warmen Atmosphäre der Tradition. Unter der jahrhundertealten Weinpergola entdecken Sie die authentischen Aromen unseres Landes, zubereitet mit Leidenschaft und echten Zutaten.',
-                'feature1-title': 'Einzigartige Atmosphäre',
-                'feature1-text': 'Speisen Sie unter einer charmanten Weinpergola in einem Garten, der nach Geschichte und Tradition duftet. Eine Oase der Ruhe im Herzen von Chiusi.',
-                'feature2-title': 'Traditionelle Küche',
-                'feature2-text': 'Typische toskanische Gerichte mit Leidenschaft zubereitet: Pappardelle, Meeresfrüchte-Pasta, Risotto, Rindfleisch, Ente, Florentiner Steak und vieles mehr.',
-                'feature3-title': 'Optionen für Alle',
-                'feature3-text': 'Vegetarisches und veganes Menü verfügbar. Wir verwenden frische lokale Produkte, toskanische Käse und feine Weine. Kreditkarten werden akzeptiert.',
-                specialties: 'Unsere Spezialitäten',
-                'specialties-text': 'Von cremiger Panna Cotta bis zu hausgemachten Pappardelle, von leckerem Risotto bis zu frischen Fischgerichten. Jedes Gericht erzählt eine Geschichte von echten Aromen und toskanischer kulinarischer Tradition. Vergessen Sie nicht, unser hausgemachtes Tiramisu zu probieren!',
-                'reviews-online': 'Online-Bewertungen',
-                gallery: 'Galerie',
-                'gallery-text': 'Eine visuelle Reise durch unsere Gerichte und einzigartige Atmosphäre',
-                testimonials: 'Was Unsere Kunden Sagen',
-                contact: 'Kontakt',
-                'contact-text': 'Besuchen Sie uns oder kontaktieren Sie uns',
-                address: 'Adresse',
-                phone: 'Telefon',
-                hours: 'Öffnungszeiten',
-                'day-sun': 'Sonntag',
-                'day-mon': 'Montag',
-                'day-tue': 'Dienstag',
-                'day-wed': 'Mittwoch',
-                'day-thu': 'Donnerstag',
-                'day-fri': 'Freitag',
-                'day-sat': 'Samstag',
-                closed: 'Geschlossen',
-                info: 'Informationen',
-                'info-text': '• Vegetarisches und veganes Menü<br>• Kreditkarten akzeptiert<br>• Mittag- und Abendessen<br>• Sitzplätze im Freien<br>• Zum Mitnehmen verfügbar',
-                'footer-hours': 'Täglich geöffnet 12:00-14:30 | 19:00-22:00 (Mittwochs geschlossen)'
-            },
-            nl: {
-                subtitle: 'Authentieke Smaken van de Toscaanse Traditie',
-                'nav-home': 'Home',
-                'nav-gallery': 'Galerij',
-                'nav-contact': 'Contact',
-                welcome: 'Welkom',
-                'welcome-text': 'In het hart van Chiusi, Toscane, verwelkomt ons restaurant u met de warme sfeer van traditie. Onder de eeuwenoude wijnpergola herontdekt u de authentieke smaken van ons land, bereid met passie en echte ingrediënten.',
-                'feature1-title': 'Unieke Sfeer',
-                'feature1-text': 'Dineer onder een charmante wijnpergola in een tuin die ruikt naar geschiedenis en traditie. Een oase van rust in het hart van Chiusi.',
-                'feature2-title': 'Traditionele Keuken',
-                'feature2-text': 'Typische Toscaanse gerechten bereid met passie: pappardelle, zeevruchten pasta, risotto, rundvlees, eend, Florentijnse biefstuk en nog veel meer.',
-                'feature3-title': 'Opties voor Iedereen',
-                'feature3-text': 'Vegetarisch en veganistisch menu beschikbaar. We gebruiken verse lokale producten, Toscaanse kazen en fijne wijnen. Creditcards geaccepteerd.',
-                specialties: 'Onze Specialiteiten',
-                'specialties-text': 'Van romige panna cotta tot huisgemaakte pappardelle, van smakelijke risotto tot verse visgerechten. Elk gerecht vertelt een verhaal van echte smaken en Toscaanse culinaire traditie. Vergeet niet onze huisgemaakte tiramisu te proberen!',
-                'reviews-online': 'Online Reviews',
-                gallery: 'Galerij',
-                'gallery-text': 'Een visuele reis door onze gerechten en unieke sfeer',
-                testimonials: 'Wat Onze Klanten Zeggen',
-                contact: 'Contact',
-                'contact-text': 'Kom bij ons langs of neem contact met ons op',
-                address: 'Adres',
-                phone: 'Telefoon',
-                hours: 'Openingstijden',
-                'day-sun': 'Zondag',
-                'day-mon': 'Maandag',
-                'day-tue': 'Dinsdag',
-                'day-wed': 'Woensdag',
-                'day-thu': 'Donderdag',
-                'day-fri': 'Vrijdag',
-                'day-sat': 'Zaterdag',
-                closed: 'Gesloten',
-                info: 'Informatie',
-                'info-text': '• Vegetarisch en veganistisch menu<br>• Creditcards geaccepteerd<br>• Lunch en diner<br>• Zitplaatsen buiten<br>• Afhalen beschikbaar',
-                'footer-hours': 'Dagelijks geopend 12:00-14:30 | 19:00-22:00 (Woensdag gesloten)'
-            },
-            ru: {
-                subtitle: 'Подлинные Вкусы Тосканской Традиции',
-                'nav-home': 'Главная',
-                'nav-gallery': 'Галерея',
-                'nav-contact': 'Контакты',
-                welcome: 'Добро пожаловать',
-                'welcome-text': 'В сердце Кьюзи, Тоскана, наш ресторан встречает вас теплой атмосферой традиций. Под вековой виноградной беседкой откройте для себя подлинные вкусы нашей земли, приготовленные с любовью и натуральными ингредиентами.',
-                'feature1-title': 'Уникальная Атмосфера',
-                'feature1-text': 'Пообедайте под очаровательной виноградной беседкой в саду, пахнущем историей и традициями. Оазис спокойствия в сердце Кьюзи.',
-                'feature2-title': 'Традиционная Кухня',
-                'feature2-text': 'Типичные тосканские блюда, приготовленные с любовью: паппарделле, паста с морепродуктами, ризотто, говядина, утка, флорентийский стейк и многое другое.',
-                'feature3-title': 'Варианты для Всех',
-                'feature3-text': 'Доступно вегетарианское и веганское меню. Мы используем свежие местные продукты, тосканские сыры и изысканные вина. Принимаются кредитные карты.',
-                specialties: 'Наши Фирменные Блюда',
-                'specialties-text': 'От кремовой панна-котты до домашних паппарделле, от вкусного ризотто до блюд из свежей рыбы. Каждое блюдо рассказывает историю подлинных вкусов и тосканской кулинарной традиции. Не забудьте попробовать наш домашний тирамису!',
-                'reviews-online': 'Отзывы в Интернете',
-                gallery: 'Галерея',
-                'gallery-text': 'Визуальное путешествие по нашим блюдам и уникальной атмосфере',
-                testimonials: 'Что Говорят Наши Клиенты',
-                contact: 'Контакты',
-                'contact-text': 'Приходите к нам или свяжитесь с нами',
-                address: 'Адрес',
-                phone: 'Телефон',
-                hours: 'Часы работы',
-                'day-sun': 'Воскресенье',
-                'day-mon': 'Понедельник',
-                'day-tue': 'Вторник',
-                'day-wed': 'Среда',
-                'day-thu': 'Четверг',
-                'day-fri': 'Пятница',
-                'day-sat': 'Суббота',
-                closed: 'Закрыто',
-                info: 'Информация',
-                'info-text': '• Вегетарианское и веганское меню<br>• Принимаются кредитные карты<br>• Обед и ужин<br>• Места на открытом воздухе<br>• Доступна еда на вынос',
-                'footer-hours': 'Открыто каждый день 12:00-14:30 | 19:00-22:00 (Закрыто в среду)'
-            },
-            ja: {
-                subtitle: 'トスカーナの伝統の本格的な味',
-                'nav-home': 'ホーム',
-                'nav-gallery': 'ギャラリー',
-                'nav-contact': 'お問い合わせ',
-                welcome: 'ようこそ',
-                'welcome-text': 'トスカーナのキウージの中心部にある当レストランは、伝統の温かい雰囲気でお迎えします。何世紀も前のブドウのパーゴラの下で、情熱と本物の食材で調理された私たちの土地の本格的な味を再発見してください。',
-                'feature1-title': 'ユニークな雰囲気',
-                'feature1-text': '歴史と伝統の香りがする庭園の魅力的なブドウのパーゴラの下で食事をお楽しみください。キウージの中心にある静けさのオアシスです。',
-                'feature2-title': '伝統料理',
-                'feature2-text': '情熱を込めて調理された典型的なトスカーナ料理:パッパルデッレ、シーフードパスタ、リゾット、牛肉、鴨肉、フィレンツェ風ステーキなど。',
-                'feature3-title': 'すべての人のためのオプション',
-                'feature3-text': 'ベジタリアンおよびビーガンメニューをご用意しています。新鮮な地元の製品、トスカーナのチーズ、上質なワインを使用しています。クレジットカード利用可能。',
-                specialties: '当店の名物',
-                'specialties-text': 'クリーミーなパンナコッタから自家製パッパルデッレ、おいしいリゾットから新鮮な魚料理まで。各料理は、本格的な味とトスカーナの料理の伝統の物語を語ります。自家製ティラミスもぜひお試しください!',
-                'reviews-online': 'オンラインレビュー',
-                gallery: 'ギャラリー',
-                'gallery-text': '私たちの料理とユニークな雰囲気を通じた視覚的な旅',
-                testimonials: 'お客様の声',
-                contact: 'お問い合わせ',
-                'contact-text': 'お越しいただくか、お問い合わせください',
-                address: '住所',
-                phone: '電話',
-                hours: '営業時間',
-                'day-sun': '日曜日',
-                'day-mon': '月曜日',
-                'day-tue': '火曜日',
-                'day-wed': '水曜日',
-                'day-thu': '木曜日',
-                'day-fri': '金曜日',
-                'day-sat': '土曜日',
-                closed: '休業',
-                info: '情報',
-                'info-text': '• ベジタリアンおよびビーガンメニュー<br>• クレジットカード利用可能<br>• ランチとディナー<br>• 屋外席<br>• テイクアウト可能',
-                'footer-hours': '毎日営業 12:00-14:30 | 19:00-22:00 (水曜定休)'
-            },
-            zh: {
-                subtitle: '托斯卡纳传统的正宗风味',
-                'nav-home': '主页',
-                'nav-gallery': '画廊',
-                'nav-contact': '联系方式',
-                welcome: '欢迎光临',
-                'welcome-text': '在托斯卡纳基乌西的中心地带,我们的餐厅以传统的温馨氛围欢迎您。在百年葡萄藤凉棚下,重新发现我们土地的正宗风味,用热情和真正的食材烹制而成。',
-                'feature1-title': '独特的氛围',
-                'feature1-text': '在散发着历史和传统气息的花园中迷人的葡萄藤凉棚下用餐。基乌西中心的宁静绿洲。',
-                'feature2-title': '传统美食',
-                'feature2-text': '用热情烹制的典型托斯卡纳菜肴:帕帕代尔宽面、海鲜意面、意大利调味饭、牛肉、鸭肉、佛罗伦萨牛排等等。',
-                'feature3-title': '适合所有人的选择',
-                'feature3-text': '提供素食和纯素菜单。我们使用新鲜的当地产品、托斯卡纳奶酪和上等葡萄酒。接受信用卡。',
-                specialties: '我们的特色菜',
-                'specialties-text': '从奶油意式奶冻到自制帕帕代尔宽面,从美味的意大利调味饭到新鲜的鱼类菜肴。每道菜都讲述着正宗风味和托斯卡纳烹饪传统的故事。不要忘记尝试我们的自制提拉米苏!',
-                'reviews-online': '在线评论',
-                gallery: '画廊',
-                'gallery-text': '通过我们的菜肴和独特氛围的视觉之旅',
-                testimonials: '客户评价',
-                contact: '联系方式',
-                'contact-text': '来访问我们或联系我们',
-                address: '地址',
-                phone: '电话',
-                hours: '营业时间',
-                'day-sun': '星期日',
-                'day-mon': '星期一',
-                'day-tue': '星期二',
-                'day-wed': '星期三',
-                'day-thu': '星期四',
-                'day-fri': '星期五',
-                'day-sat': '星期六',
-                closed: '休息',
-                info: '信息',
-                'info-text': '• 素食和纯素菜单<br>• 接受信用卡<br>• 午餐和晚餐<br>• 户外座位<br>• 提供外卖',
-                'footer-hours': '每天营业 12:00-14:30 | 19:00-22:00 (周三休息)'
-            }
-        };
-
-        const langFlags = {
-            it: '🇮🇹',
-            en: '🇬🇧',
-            fr: '🇫🇷',
-            es: '🇪🇸',
-            de: '🇩🇪',
-            nl: '🇳🇱',
-            ru: '🇷🇺',
-            ja: '🇯🇵',
-            zh: '🇨🇳'
-        };
-
-        const langNames = {
-            it: 'IT',
-            en: 'EN',
-            fr: 'FR',
-            es: 'ES',
-            de: 'DE',
-            nl: 'NL',
-            ru: 'RU',
-            ja: 'JA',
-            zh: 'ZH'
-        };
-
-        let currentLang = 'it';
-
-        function toggleLangMenu() {
-            const dropdown = document.getElementById('langDropdown');
-            dropdown.classList.toggle('active');
-
-            // Close menu when clicking outside
-            if (dropdown.classList.contains('active')) {
-                setTimeout(() => {
-                    document.addEventListener('click', closeMenuOnClickOutside);
-                }, 0);
-            }
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const navMenu = document.getElementById('navMenu');
+            navMenu.classList.toggle('active');
         }
 
-        function closeMenuOnClickOutside(e) {
-            const dropdown = document.getElementById('langDropdown');
-            if (!dropdown.contains(e.target)) {
-                dropdown.classList.remove('active');
-                document.removeEventListener('click', closeMenuOnClickOutside);
-            }
-        }
-
-        function changeLanguage(lang) {
-            currentLang = lang;
-
-            // Update current language display
-            document.getElementById('currentLangFlag').textContent = langFlags[lang];
-            document.getElementById('currentLangCode').textContent = langNames[lang];
-
-            // Close dropdown
-            document.getElementById('langDropdown').classList.remove('active');
-
-            // Update page language attribute for SEO
-            document.documentElement.lang = lang;
-
-            // Update all translatable elements
-            document.querySelectorAll('[data-translate]').forEach(element => {
-                const key = element.getAttribute('data-translate');
-                if (translations[lang][key]) {
-                    if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
-                        element.placeholder = translations[lang][key];
-                    } else {
-                        element.innerHTML = translations[lang][key];
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId !== '#') {
+                    const target = document.querySelector(targetId);
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth'
+                        });
                     }
                 }
+                // Close mobile menu if open
+                document.getElementById('navMenu').classList.remove('active');
             });
-        }
+        });
 
-        function showPage(page) {
-            const pages = ['home', 'gallery'];
-            const pageContent = document.getElementById('page-content');
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function (e) {
+            const navMenu = document.getElementById('navMenu');
+            const toggle = document.querySelector('.mobile-menu-toggle');
 
-            // Trigger animation
-            pageContent.style.animation = 'none';
-            setTimeout(() => {
-                pageContent.style.animation = 'pageEnter 0.5s ease-out';
-            }, 10);
+            if (!navMenu.contains(e.target) && !toggle.contains(e.target)) {
+                navMenu.classList.remove('active');
+            }
+        });
 
-            pages.forEach(p => {
-                const pageElement = document.getElementById(p + '-page');
-                if (pageElement) {
-                    pageElement.style.display = p === page ? 'block' : 'none';
+        // Lightbox per la galleria
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImage = document.getElementById('lightbox-image');
+        const lightboxCaption = document.getElementById('lightbox-caption');
+        const closeBtn = document.querySelector('.close-lightbox');
+
+        // Aggiungi click listener a tutte le gallery placeholder
+        document.querySelectorAll('.gallery-placeholder').forEach((placeholder, index) => {
+            placeholder.addEventListener('click', function () {
+                const card = this.closest('.gallery-card');
+                const title = card.querySelector('h4').textContent;
+                const description = card.querySelector('p').textContent;
+
+                // Simula il caricamento di un'immagine (puoi sostituire con URL reali)
+                const imageUrls = [
+                    './assets/villa-2.webp', // Giardino
+                    './assets/pool.webp', // Piscina
+                    './assets/villa-4.webp', // Sala ricevimenti
+                    './assets/room.webp', // Terrazza
+                    './assets/villa-3.webp',
+                    './assets/boats.webp',
+                    './assets/mountains.webp',
+                    './assets/garden.webp',
+                ];
+
+                lightboxImage.innerHTML = `<img src="${imageUrls[index] || imageUrls[0]}" alt="${title}" class="lightbox-image" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjBmOGZmIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxOCIgZmlsbD0iIzk5OSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkltbWFnaW5lIG5vbiBkaXNwb25pYmlsZTwvdGV4dD48L3N2Zz4=';">`;
+                lightboxCaption.textContent = `${title} - ${description}`;
+                lightbox.style.display = 'block';
+            });
+        });
+
+        // Chiudi lightbox
+        closeBtn.addEventListener('click', function () {
+            lightbox.style.display = 'none';
+        });
+
+        // Chiudi lightbox cliccando fuori dall'immagine
+        lightbox.addEventListener('click', function (e) {
+            if (e.target === lightbox) {
+                lightbox.style.display = 'none';
+            }
+        });
+
+        // Chiudi lightbox con ESC
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape' && lightbox.style.display === 'block') {
+                lightbox.style.display = 'none';
+            }
+        });
+
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function (entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
                 }
             });
+        }, observerOptions);
 
-            // Initialize map when home page is shown (contact is on home)
-            if (page === 'home' && !window.mapInitialized) {
-                // Delay map initialization to ensure element is visible
-                setTimeout(initMap, 100);
-            }
-
-            // Scroll to top smoothly
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        function scrollToContact() {
-            // Make sure we're on the home page
-            showPage('home');
-
-            // Wait for page to load, then scroll to contact
-            setTimeout(() => {
-                const contactSection = document.getElementById('contact');
-                if (contactSection) {
-                    contactSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-
-                    // Initialize map if not already done
-                    if (!window.mapInitialized) {
-                        setTimeout(initMap, 300);
-                    }
-                }
-            }, 100);
-        }
-
-        // Initialize Leaflet map
-        function initMap() {
-            if (window.mapInitialized) return;
-
-            const mapElement = document.getElementById('map');
-            if (!mapElement || mapElement.offsetParent === null) {
-                // Map element not visible yet, try again later
-                return;
-            }
-
-            // Coordinates for Chiusi, Tuscany
-            const restaurantLat = 43.0161;
-            const restaurantLng = 11.9494;
-
-            const map = L.map('map').setView([restaurantLat, restaurantLng], 15);
-
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                attribution: '© OpenStreetMap contributors',
-                maxZoom: 19
-            }).addTo(map);
-
-            // Add marker for restaurant
-            const marker = L.marker([restaurantLat, restaurantLng]).addTo(map);
-            marker.bindPopup('<b>Il Bucchero</b><br>Ristorante Tradizionale<br>Via della Pace, 36<br>53043 Chiusi (SI)').openPopup();
-
-            window.mapInitialized = true;
-        }
-
-        // Initialize on page load
-        document.addEventListener('DOMContentLoaded', function () {
-            changeLanguage('it');
-
-            // Try to initialize map after a delay if on home page
-            setTimeout(() => {
-                if (document.getElementById('home-page').style.display !== 'none') {
-                    initMap();
-                }
-            }, 1000);
+        // Add animation classes to cards
+        document.querySelectorAll('.card, .gallery-card, .event-card, .contact-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
         });
     </script>
 </body>
